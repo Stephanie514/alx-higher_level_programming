@@ -4,7 +4,5 @@
 
 """Print the alphabet in lowercase, not followed by a new line."""
 
-alphabet = [chr(letter) for letter in range(97, 123)]
-result = "".join(alphabet)
-
-print(result, end="")
+for letter in range(ord('a'), ord('z') + 1):
+    print("{}".format(chr(letter)), end="")
