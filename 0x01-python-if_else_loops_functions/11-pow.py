@@ -6,4 +6,3 @@ def pow(a, b):
     """Return a to the power of b."""
     res = a ** b
     return res
-
