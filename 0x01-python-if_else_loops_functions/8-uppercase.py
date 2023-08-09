@@ -3,10 +3,9 @@
 # 8-uppercase.py
 
 def uppercase(s):
-    result = ""
     for char in s:
-        if ord('a') <= ord(char) <= ord('z'):
-            result += chr(ord(char) - 32)
+        if 'a' <= char <= 'z':
+            print(chr(ord(char) - ord('a') + ord('A')), end="")
         else:
-            result += char
-    print(result)
+            print(char, end="")
+    print()
