@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-filtered_chars = [
-    chr(char_code) for char_code in range(97, 123)
-    if chr(char_code) not in ['q', 'e']
-]
-result_str = "".join(filtered_chars)
+for letter_code in range(97, 123):
+    if letter_code != 101 and letter_code != 113:
+        print("{}".format(chr(letter_code)), end="")
 
-print(result_str, end="")
