@@ -11,4 +11,3 @@ def print_number_classification(number):
         print(f"{number} is zero")
     else:
         print(f"{number} is negative")
-
