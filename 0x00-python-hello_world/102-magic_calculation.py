@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 def magic_calculation(a, b):
-    result = 98
-    result += a ** b
-    return result
-
+    result = a
+    for _ in range(b):
+        result *= a
+    return result + 98
