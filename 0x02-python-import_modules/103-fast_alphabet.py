@@ -1,5 +1,3 @@
 #!/usr/bin/python3
 import string
-import sys
-
-print(string.ascii_uppercase, file=sys.stdout)
+import sys; sys.stdout.write(string.ascii_uppercase + '\n')
