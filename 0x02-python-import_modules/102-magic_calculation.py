@@ -3,4 +3,10 @@
 def magic_calculation(a, b):
     from magic_calculation_102 import add, sub
 
-    return add(add(a, b), add(4, 5)) if a < b else sub(a, b)
+    if a < b:
+        c = add(a, b)
+        c = add(c, 4)
+        c = add(c, 5)
+        return c
+    else:
+        return sub(a, b)
