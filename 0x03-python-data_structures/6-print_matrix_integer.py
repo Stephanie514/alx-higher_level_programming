@@ -2,5 +2,10 @@
 
 def print_matrix_integer(matrix=[[]]):
     for row in matrix:
-        row_str = " ".join(map(str, row))
-        print(row_str)
+        for idx, element in enumerate(row):
+            if idx < len(row) - 1:
+                print("{:d}".format(element), end=" ")
+            else:
+                print("{:d}".format(element))
+        if not row:
+            print()
