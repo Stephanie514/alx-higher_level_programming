@@ -1,11 +1,9 @@
-#!/usr/bin/pythoet3
+#!/usr/bin/python3
 
-def square_matrix_simple(matrix_input=[]):
-    result_matrix = matrix_input.copy()
-
-    for row_index in range(len(matrix_input)):
-        original_row = matrix_input[row_index]
-        squared_row = list(map(lambda value: value ** 2, original_row))
-        result_matrix[row_index] = squared_row
+def square_matrix_simple(matrix=[]):
+    result_matrix = [[0] * len(row) for row in matrix]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            result_matrix[i][j] = matrix[i][j] ** 2
 
     return result_matrix
