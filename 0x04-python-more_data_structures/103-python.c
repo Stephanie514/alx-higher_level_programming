@@ -2,12 +2,12 @@
 #include <time.h>
 #include <Python.h>
 /**
- * prints_pbytes - This Prints the bytes info
+ * print_python_bytes - This Prints the bytes info
  *
  * @p: The Python Object
  * Return: 0
  */
-void prints_pbytes(PyObject *p)
+void print_python_bytes(PyObject *p)
 {
 char *byte_string;
 long int byte_size, i, limit;
@@ -39,12 +39,12 @@ printf("\n");
 }
 
 /**
- * prints_plist - This Prints the list info
+ * print_python_list - This Prints the list info
  *
  * @p: The Python Object
  * Return: 0
  */
-void prints_plist(PyObject *p)
+void print_python_list(PyObject *p)
 {
 long int list_size, i;
 PyListObject *py_list;
@@ -63,6 +63,6 @@ element = py_list->ob_item[i];
 printf("Element %ld: %s\n", i, ((element)->ob_type)->tp_name);
 
 if (PyBytes_Check(element))
-prints_pbytes(element);
+print_python_bytes(element);
 }
 }
