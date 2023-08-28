@@ -13,4 +13,4 @@ def magic_calculation(a, b):
             output = b + a
             break
         v += 1
-    return output 
+    return output
