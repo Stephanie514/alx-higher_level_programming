@@ -1,21 +1,45 @@
-import math
+#!/usr/bin/python3
 
-"""Define MagicClass matching given bytecode"""
+"""
+This module defines the MagicClass which represents a circle.
+"""
+
+import math
 
 
 class MagicClass:
-    """Represent the area circle"""
+    """
+    The MagicClass represents a circle with a given radius.
+    """
+
     def __init__(self, radius=0):
-        """Initialize MagicClass"""
-        self.__r = 0
+        """
+        Initialize a MagicClass instance.
+
+        Args:
+            radius (float or int): The radius of the circle.
+        """
+        self.__radius = 0
 
         if not isinstance(radius, (int, float)):
             raise TypeError("radius must be a number")
 
-        self.__r = radius
+        self.__radius = radius
 
     def compute_area(self):
-        return self.__r ** 2 * math.pi
+        """
+        Compute the area of the circle.
+
+        Returns:
+            float: The computed area of the circle.
+        """
+        return self.__radius ** 2 * math.pi
 
     def compute_circumference(self):
-        return 2 * math.pi * self.__r
+        """
+        Compute the circumference of the circle.
+
+        Returns:
+            float: The computed circumference of the circle.
+        """
+        return 2 * math.pi * self.__radius
