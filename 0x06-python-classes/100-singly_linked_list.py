@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-"""Define class Node"""
-
-
 class Node:
     """Represent a node in a singly-linked list."""
 
@@ -57,16 +54,12 @@ class SinglyLinkedList:
         """
         new_node = Node(value)
 
-        if self.__my_head is None:
-            new_node.next_node = None
-            self.__my_head = new_node
-        elif self.__my_head.data > value:
+        if self.__my_head is None or self.__my_head.data >= value:
             new_node.next_node = self.__my_head
             self.__my_head = new_node
         else:
             tmp = self.__my_head
-            while (tmp.next_node is not None and
-                   tmp.next_node.data < value):
+            while tmp.next_node is not None and tmp.next_node.data < value:
                 tmp = tmp.next_node
             new_node.next_node = tmp.next_node
             tmp.next_node = new_node
