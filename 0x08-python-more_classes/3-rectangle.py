@@ -17,10 +17,11 @@ class Rectangle:
             width (int, optional): The width of the Rectangle (default is 0).
             height (int, optional): The height of the Rectangle (default is 0).
         """
-        self.width = width
-        self.height = height
+        self._width = width  # Use single underscore for private attribute
+        self._height = height  # Use single underscore for private attribute
 
-    def get_width(self):
+    @property
+    def width(self):
         """
         Get the width of the Rectangle.
 
@@ -29,7 +30,8 @@ class Rectangle:
         """
         return self._width
 
-    def set_width(self, value):
+    @width.setter
+    def width(self, value):
         """
         Set the width of the Rectangle.
 
@@ -46,7 +48,8 @@ class Rectangle:
             raise ValueError("width must be >= 0")
         self._width = value
 
-    def get_height(self):
+    @property
+    def height(self):
         """
         Get the height of the Rectangle.
 
@@ -55,7 +58,8 @@ class Rectangle:
         """
         return self._height
 
-    def set_height(self, value):
+    @height.setter
+    def height(self, value):
         """
         Set the height of the Rectangle.
 
