@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""Rectangle Module-7
+"""
+
+
 class Rectangle:
     """Rectangle class definition."""
 
