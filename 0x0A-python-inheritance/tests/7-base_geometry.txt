@@ -1,0 +1,75 @@
+#!/usr/bin/python3
+"""Test cases for integer_validator function in BaseGeometry class.
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> try:
+...     bg.integer_validator("name", "John")
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("float_n", 5.23)
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("float_n", float("inf"))
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("float_n", float("-inf"))
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("boolean", True)
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("age", 0)
+... except ValueError:
+...     pass
+>>> try:
+...     bg.integer_validator("distance", -4)
+... except ValueError:
+...     pass
+>>> try:
+...     bg.integer_validator("missing1")
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator()
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", None)
+... except TypeError:
+...     pass
+>>> try:
+...     bg.area()
+... except Exception:
+...     pass
+>>> try:
+...     bg.area("aaa")
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", 2+5j)
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", [1, 2])
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", (1, 2))
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", {"a": 8})
+... except TypeError:
+...     pass
+>>> try:
+...     bg.integer_validator("name", {2, 8})
+... except TypeError:
+...     pass
