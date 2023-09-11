@@ -1,9 +1,8 @@
-#!/bin/usr/python3
-"""Class that inherits from int"""
-
+#!/usr/bin/python3
+""" Define MyInt class that inherits from int."""
 
 class MyInt(int):
-    """MyInt class body"""
+    """MyInt is a rebel. MyInt has == and != operators inverted."""
 
     def __eq__(self, other):
         """Override == operator with !="""
