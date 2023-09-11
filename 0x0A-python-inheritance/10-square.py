@@ -15,7 +15,7 @@ class Square(Rectangle):
             size (int): The size of the square side.
         """
         self.__size = size
-        super().__init__(size, size)
+        super().integer_validator("size", size)
 
     def area(self):
         """
@@ -25,3 +25,12 @@ class Square(Rectangle):
             int: The area of the square.
         """
         return self.__size * self.__size
+
+    def __str__(self):
+        """
+        Return a string representation of the square.
+
+        Returns:
+            str: A string in the format "[Square] <size>/<size>".
+        """
+        return "[Square] {}/{}".format(self.__size, self.__size)
