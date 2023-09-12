@@ -8,12 +8,6 @@ This script defines a function to read a text file
 
 
 def read_file(filename=""):
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            while True:
-                chunk = f.read(4096)
-                if not chunk:
-                    break
-                print(chunk, end='')
-    except FileNotFoundError:
-        pass
+    with open(filename, 'r', encoding='utf-8') as f:
+        for line in f:
+            print(line, end='')
