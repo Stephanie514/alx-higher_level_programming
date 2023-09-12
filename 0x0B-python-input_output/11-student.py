@@ -16,22 +16,30 @@ class Student:
         Retrieve a dictionary representation of a Student instance.
 
         Args:
-            attributes (list): A list of attribute names to include in the dictionary.
+            attributes (list): A list of attribute names to
+                include in the dictionary.
 
         Returns:
-            dict: A dictionary containing the specified attributes and their values.
+            dict: A dictionary containing the specified attributes
+                and their values.
         """
         if attributes is None:
             return self.__dict__
-        return {key: value for key, value in self.__dict__.items() if key in attributes}
+
+        filtered_attributes = {
+            key: value for key, value in self.__dict__.items()
+            if key in attributes
+        }
+
+        return filtered_attributes
 
     def reload_from_json(self, json_data):
         """
         Replace all attributes of the Student instance from a dictionary.
 
         Args:
-            json_data (dict): A dictionary containing attribute names and their values.
+            json_data (dict): A dictionary containing attribute
+                names and their values.
         """
         for key, value in json_data.items():
             setattr(self, key, value)
-
