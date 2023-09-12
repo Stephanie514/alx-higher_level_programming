@@ -1,18 +1,28 @@
 #!/usr/bin/python3
-"""Script to add command-line arguments to a Python
-list and save to a file."""
+"""Script to add command-line arguments to a Python list and
+save them to a JSON file."""
 
 import sys
-from json_utils import (
-    save_to_json_file as save_json,
-    load_from_json_file as load_json
-)
+import json
+
+
+def save_to_json_file(my_obj, filename):
+    """Saves an object to a JSON file."""
+    with open(filename, mode='w', encoding='utf-8') as f:
+        json.dump(my_obj, f)
+
+
+def load_from_json_file(filename):
+    """Loads an object from a JSON file."""
+    try:
+        with open(filename, encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
 
 if __name__ == "__main__":
-    try:
-        argument_list = load_json("arguments.json")
-    except FileNotFoundError:
-        argument_list = []
-
-    argument_list.extend(sys.argv[1:])
-    save_json(argument_list, "arguments.json")
+    filename = "add_item.json"
+    items = load_from_json_file(filename)
+    items.extend(sys.argv[1:])
+    save_to_json_file(items, filename)
