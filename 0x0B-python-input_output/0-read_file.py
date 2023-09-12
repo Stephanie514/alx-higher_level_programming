@@ -17,11 +17,3 @@ def read_file(filename=""):
                 print(chunk, end='')
     except FileNotFoundError:
         pass
-
-
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) != 2:
-        print("Usage: ./read_file.py filename")
-    else:
-        read_file(sys.argv[1])
