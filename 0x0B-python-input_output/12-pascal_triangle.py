@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""pascal_traingle module."""
+
 
 def pascal_triangle(n):
     """
@@ -15,17 +17,13 @@ def pascal_triangle(n):
         return []
 
     triangle = []
-    for current_row_number in range(n):
-        current_row = [1]  # First element is always 1
-
-        if triangle:
-            previous_row = triangle[-1]
-            for i in range(len(previous_row) - 1):
-                current_element = previous_row[i] + previous_row[i + 1]
-                current_row.append(current_element)
-
-            current_row.append(1)  # Last element is always 1
-
-        triangle.append(current_row)
+    for i in range(n):
+        row = [1]  # First element is always 1
+        if i > 0:
+            prev_row = triangle[i - 1]
+            for j in range(1, i):
+                row.append(prev_row[j - 1] + prev_row[j])
+            row.append(1)  # Last element is always 1
+        triangle.append(row)
 
     return triangle
