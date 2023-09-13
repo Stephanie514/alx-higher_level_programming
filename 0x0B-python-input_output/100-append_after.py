@@ -18,6 +18,6 @@ containing the search_string.
             result.append(line)
             if search_string in line:
                 result.append(new_string)
-    
+
     with open(filename, "w") as file:
         file.writelines(result)
