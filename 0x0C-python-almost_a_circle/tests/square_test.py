@@ -67,6 +67,28 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.width, 8)
         self.assertEqual(s1.height, 8)
 
+    def test_update_args(self):
+        """Test update method with *args (no **kwargs)
+        """
+        s1 = Square(5)
+        s1.update(89, 3, 2, 1)
+        self.assertEqual(str(s1), "[Square] (89) 2/1 - 3")
+
+    def test_update_kwargs(self):
+        """Test update method with **kwargs (no *args)
+        """
+        s1 = Square(5)
+        s1.update(size=3, x=2, y=1, id=89)
+        self.assertEqual(str(s1), "[Square] (89) 2/1 - 3")
+
+    def test_update_args_and_kwargs(self):
+        """Test update method with both *args and **kwargs
+        (args should take precedence)
+        """
+        s1 = Square(5)
+        s1.update(89, 3, 2, 1, size=4, x=5)
+        self.assertEqual(str(s1), "[Square] (89) 2/1 - 3")
+
 
 if __name__ == '__main__':
     unittest.main()

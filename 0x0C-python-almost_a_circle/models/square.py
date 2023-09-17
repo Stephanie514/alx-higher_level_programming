@@ -39,13 +39,13 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-        """update square props
+        """Update square attributes with *args and/or **kwargs
         """
-        if len(args):
+        if args:
             attrs = ["id", "size", "x", "y"]
             for i, arg in enumerate(args):
                 setattr(self, attrs[i], arg)
-        else:
+        elif kwargs:
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
