@@ -96,8 +96,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_display(self):
         """Test the display method to print the Rectangle instance."""
-        r1 = Rectangle(3, 2)
-        expected_output = "###\n###\n"
+        r1 = Rectangle(3, 2, 2, 1)
+        expected_output = "\n  ###\n  ###\n"
 
         with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
             r1.display()
