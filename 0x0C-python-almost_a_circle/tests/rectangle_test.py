@@ -86,11 +86,11 @@ class TestRectangle(unittest.TestCase):
 
     def test_area(self):
         """Test the area method to calculate the area of a rectangle."""
-    r1 = Rectangle(4, 5)
-    self.assertEqual(r1.area(), 20)
+        r1 = Rectangle(4, 5)
+        self.assertEqual(r1.area(), 20)
 
-    r2 = Rectangle(10, 2)
-    self.assertEqual(r2.area(), 20)
+        r2 = Rectangle(10, 2)
+        self.assertEqual(r2.area(), 20)
 
 
 if __name__ == '__main__':
