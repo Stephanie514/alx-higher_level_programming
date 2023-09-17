@@ -103,6 +103,12 @@ class TestRectangle(unittest.TestCase):
             r1.display()
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
+    def test_str_representation(self):
+        """Test the __str__ method to check the string representation."""
+        r1 = Rectangle(4, 5, 1, 2, 10)
+        expected_str = "[Rectangle] (10) 1/2 - 4/5"
+        self.assertEqual(str(r1), expected_str)
+
 
 if __name__ == '__main__':
     unittest.main()
