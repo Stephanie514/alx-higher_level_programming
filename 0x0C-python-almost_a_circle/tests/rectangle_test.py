@@ -112,6 +112,7 @@ class TestRectangle(unittest.TestCase):
     def test_update(self):
         """Test the update method to assign values to attributes."""
         r1 = Rectangle(4, 5, 1, 2, 10)
+
         r1.update(89)
         self.assertEqual(r1.id, 89)
 
@@ -127,12 +128,20 @@ class TestRectangle(unittest.TestCase):
         r1.update(89, 2, 3, 4, 5)
         self.assertEqual(r1.y, 5)
 
-        r1.update()
-        self.assertEqual(r1.id, 89)
-        self.assertEqual(r1.width, 2)
-        self.assertEqual(r1.height, 3)
-        self.assertEqual(r1.x, 4)
-        self.assertEqual(r1.y, 5)
+        r1.update(width=7, x=3)
+        self.assertEqual(r1.width, 7)
+        self.assertEqual(r1.x, 3)
+
+        r1.update(height=8, y=4)
+        self.assertEqual(r1.height, 8)
+        self.assertEqual(r1.y, 4)
+
+        r1.update(id=90, width=10, height=20, x=5, y=6)
+        self.assertEqual(r1.id, 90)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r1.height, 20)
+        self.assertEqual(r1.x, 5)
+        self.assertEqual(r1.y, 6)
 
 
 if __name__ == '__main__':
