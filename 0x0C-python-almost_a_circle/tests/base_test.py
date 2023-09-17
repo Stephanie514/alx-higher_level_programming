@@ -89,6 +89,18 @@ class TestBase(unittest.TestCase):
         """Reset __nb_objects before each test"""
         Base._Base__nb_objects = 0
 
+    def test_load_from_file(self):
+        """Test load_from_file method"""
+        filename = "Rectangle.json"
+        r1 = Rectangle(10, 5)
+        r2 = Rectangle(7, 3)
+        Rectangle.save_to_file([r1, r2])
+
+        loaded_rectangles = Rectangle.load_from_file()
+        self.assertEqual(len(loaded_rectangles), 2)
+        self.assertEqual(loaded_rectangles[0].width, 10)
+        self.assertEqual(loaded_rectangles[1].height, 3)
+
 
 if __name__ == '__main__':
     unittest.main()
