@@ -68,6 +68,15 @@ class TestBase(unittest.TestCase):
                 ])
             )
 
+    def test_from_json_string(self):
+        """Test from_json_string method"""
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string(""), [])
+        self.assertEqual(
+            Base.from_json_string('[{"id": 1, "name": "Alice"}]'),
+            [{'id': 1, 'name': 'Alice'}]
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
