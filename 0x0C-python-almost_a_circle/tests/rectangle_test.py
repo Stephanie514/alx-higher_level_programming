@@ -47,6 +47,51 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             r9 = Rectangle(4, 5, 1, -2)
 
+    def test_valid_inputs(self):
+        """Test valid input values"""
+        r1 = Rectangle(4, 5, 1, 2, 10)
+        self.assertEqual(r1.width, 4)
+        self.assertEqual(r1.height, 5)
+        self.assertEqual(r1.x, 1)
+        self.assertEqual(r1.y, 2)
+        self.assertEqual(r1.id, 10)
+
+        r2 = Rectangle(10, 20)
+        self.assertEqual(r2.width, 10)
+        self.assertEqual(r2.height, 20)
+        self.assertEqual(r2.x, 0)
+        self.assertEqual(r2.y, 0)
+
+    def test_invalid_combinations(self):
+        """Test different combinations of valid and invalid inputs"""
+        with self.assertRaises(TypeError):
+            r3 = Rectangle("invalid", 5)
+        with self.assertRaises(ValueError):
+            r4 = Rectangle(0, 5)
+
+        with self.assertRaises(TypeError):
+            r5 = Rectangle(4, "invalid")
+        with self.assertRaises(ValueError):
+            r6 = Rectangle(4, 0)
+
+        with self.assertRaises(TypeError):
+            r7 = Rectangle(4, 5, "invalid")
+        with self.assertRaises(ValueError):
+            r8 = Rectangle(4, 5, -1)
+
+        with self.assertRaises(TypeError):
+            r9 = Rectangle(4, 5, 1, "invalid")
+        with self.assertRaises(ValueError):
+            r10 = Rectangle(4, 5, 1, -2)
+
+    def test_area(self):
+        """Test the area method to calculate the area of a rectangle."""
+    r1 = Rectangle(4, 5)
+    self.assertEqual(r1.area(), 20)
+
+    r2 = Rectangle(10, 2)
+    self.assertEqual(r2.area(), 20)
+
 
 if __name__ == '__main__':
     unittest.main()
