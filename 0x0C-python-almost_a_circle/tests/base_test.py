@@ -77,6 +77,18 @@ class TestBase(unittest.TestCase):
             [{'id': 1, 'name': 'Alice'}]
         )
 
+    def test_create(self):
+        """Test create method"""
+        r = Rectangle.create(id=99)
+        self.assertEqual(r.id, 99)
+
+        s = Square.create(id=42)
+        self.assertEqual(s.id, 42)
+
+    def setUp(self):
+        """Reset __nb_objects before each test"""
+        Base._Base__nb_objects = 0
+
 
 if __name__ == '__main__':
     unittest.main()
