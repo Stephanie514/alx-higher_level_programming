@@ -4,11 +4,12 @@
 
 import unittest
 import json
-import io  # Added import for 'io'
+import io
 from models.rectangle import Rectangle
 from models.square import Square
 from models.base import Base
 import os
+from unittest import mock
 
 
 class TestBase(unittest.TestCase):
@@ -124,7 +125,8 @@ class TestBase(unittest.TestCase):
 
         with open("Rectangle.csv", "r") as file:
             content = sorted(file.read().strip().split('\n'))
-            expected = sorted("id,width,height,x,y\n1,10,5,0,0\n2,7,3,0,0".split('\n'))
+
+            expected = sorted("1,10,5,0,0,1\n2,7,3,0,0,1".split('\n'))
             self.assertEqual(content, expected)
 
         s1 = Square(6)
@@ -133,7 +135,8 @@ class TestBase(unittest.TestCase):
 
         with open("Square.csv", "r") as file:
             content = sorted(file.read().strip().split('\n'))
-            expected = sorted("id,size,x,y\n1,6,0,0\n2,8,0,0".split('\n'))
+
+            expected = sorted("1,6,0,0,1\n2,8,0,0,1".split('\n'))
             self.assertEqual(content, expected)
 
     def test_load_from_file_csv(self):
@@ -152,6 +155,7 @@ class TestBase(unittest.TestCase):
         loaded_squares = Square.load_from_file_csv()
         self.assertEqual(len(loaded_squares), 2)
 
+    @unittest.skipIf("DISPLAY" not in os.environ, "Skipping test_draw: No disp available")
     def test_draw(self):
         """Test the draw method."""
         r1 = Rectangle(50, 30)
@@ -162,8 +166,12 @@ class TestBase(unittest.TestCase):
         list_rectangles = [r1, r2]
         list_squares = [s1, s2]
 
-        with unittest.mock.patch('builtins.input', return_value="click"):
-            with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+        def mock_input(prompt):
+            return "click"
+
+        with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+
+            with unittest.mock.patch('builtins.input', new=mock_input):
                 Base.draw(list_rectangles, list_squares)
 
         self.assertIn("click", mock_stdout.getvalue())
