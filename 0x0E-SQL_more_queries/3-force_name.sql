@@ -9,3 +9,9 @@ CREATE TABLE IF NOT EXISTS force_name (
     id INT,
     name VARCHAR(256) NOT NULL
 );
+-- Insert initial data if the table doesn't exist
+-- You can modify the values as needed
+
+INSERT IGNORE INTO force_name (id, name)
+VALUES (1, 'ExampleName1'),
+       (2, 'ExampleName2');
