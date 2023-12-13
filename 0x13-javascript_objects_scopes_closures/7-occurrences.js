@@ -1,9 +1,3 @@
 exports.nbOccurences = function (list, searchElement) {
-  let Count = 0;
-  for (const element of list) {
-    if (element === searchElement) {
-     Count++;
-    }
-  }
-  return Count;
+  return list.reduce((count, element) => (element === searchElement ? count + 1 : count), 0);
 };
