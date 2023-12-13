@@ -1,8 +1,10 @@
 #!/usr/bin/node
 
-const myList = require('./100-data').list;
+function multiplyByIndex(value, index) {
+  return value * index;
+}
 
-const multipliedList = myList.map((value, index) => value * index);
+const list = require('./100-data').list;
 
-console.log("Initial List:", myList);
-console.log("Multiplied List:", multipliedList);
+console.log(list);
+console.log(list.map(multiplyByIndex));
