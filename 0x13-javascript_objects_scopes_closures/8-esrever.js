@@ -1,7 +1,9 @@
 exports.esrever = function (list) {
-  let reversedList = [];
-  for (let a = list.length - 1; a >= 0; a--) {
-    reversedList.push(list[a]);
+  const l = list.length;
+  for (let a = 0; a < Math.floor(l / 2); a++) {
+    const vaar = list[a];
+    list[a] = list[l - 1 - a];
+    list[l - 1 - a] = vaar;
   }
-  return reversedList;
+  return list;
 };
