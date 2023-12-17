@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This lists all cities of a state in argument"""
+"""Lists all cities of a state in argument"""
 import MySQLdb
 import sys
 
