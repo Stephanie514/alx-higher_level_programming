@@ -13,19 +13,17 @@ if __name__ == "__main__":
     username, password, database = sys.argv[1:4]
 
     engine = create_engine(f"mysql+mysqldb://{username}:{password}@localhost:3306/{database}")
-    Session = sessionmaker(bind=engine)
+    Base.metadata.create_all(engine)
 
+    Session = sessionmaker(bind=engine)
     session = Session()
 
-    state_id_to_change = 2
-    new_name = 'New Mexico'
-
-    state_to_change = session.query(State).filter_by(id=state_id_to_change).first()
+    state_to_change = session.query(State).filter_by(id=2).first()
 
     if state_to_change:
-        state_to_change.name = new_name
+        state_to_change.name = 'New Mexico'
         session.commit()
     else:
-        print("State with ID 2 not found")
+        print("Not found")
 
     session.close()
