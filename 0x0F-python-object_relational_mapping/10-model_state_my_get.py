@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 
+""" 10-model_state_my_get module """
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        sys.exit("Usage: ./script.py username password database_name state_name")
+    if len(sys.argv) != 5 or ';' in sys.argv[4]:
+        exit(1)
 
     username, password, database, state_name = sys.argv[1:5]
 
@@ -24,4 +26,5 @@ if __name__ == "__main__":
         print("Not found")
     else:
         print(state_query.id)
+
     session.close()
