@@ -5,8 +5,7 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:
-        sys.exit("Usage: ./script.py username password database_name "
-                 "state_name")
+        sys.exit("Usage: ./script.py username password database_name state_name")
 
     username = sys.argv[1]
     password = sys.argv[2]
