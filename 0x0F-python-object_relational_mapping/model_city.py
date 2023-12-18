@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 """ contains the class definition of a City
 """
 from sqlalchemy import Column, Integer, String, ForeignKey
