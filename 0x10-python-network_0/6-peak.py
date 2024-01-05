@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""contains the function find_peak"""
+"""This contains the function find_peak"""
 
 
 def find_peak(list_of_integers):
@@ -10,9 +10,10 @@ def find_peak(list_of_integers):
 
     while low < high:
         mid = (low + high) // 2
-        if list_of_integers[mid] > list_of_integers[mid + 1]:
-            high = mid
-        else:
+
+        if list_of_integers[mid] < list_of_integers[mid + 1]:
             low = mid + 1
+        else:
+            high = mid
 
     return list_of_integers[low]
