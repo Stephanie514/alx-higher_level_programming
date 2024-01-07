@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     url = f"https://api.github.com/repos/{owner}/{repository}/commits"
     response = requests.get(url)
-    
+
     if response.status_code == 200:
         commits = response.json()
         for commit in commits[:10]:
