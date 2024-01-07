@@ -10,12 +10,13 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
 
-    URL = "https://api.github.com/user"
-    AUTH = (username, password)
-    response = requests.get(URL, auth=AUTH)
+    url = "https://api.github.com/user"
+    auth = (username, password)
+    response = requests.get(url, auth=auth)
 
     if response.status_code == 200:
-        user_id = response.json().get("id")
+        user_info = response.json()
+        user_id = user_info.get("id")
         print(user_id)
     else:
         print("Error fetching user info. Status code:", response.status_code)
