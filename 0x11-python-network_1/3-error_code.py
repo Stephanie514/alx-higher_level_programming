@@ -10,12 +10,11 @@ import urllib.request as req
 
 
 if __name__ == "__main__":
-    target_url = sys.argv[1]
+    url = sys.argv[1]
 
+    request = req.Request(url)
     try:
-        request_obj = req.Request(target_url)
-        response_obj = req.urlopen(request_obj)
-        print(response_obj.read().decode("utf-8"))
-        response_obj.close()
-    except urllib.error.HTTPError as error:
-        print("Error code: {}".format(error.code))
+        with req.urlopen(request) as response:
+            print(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        print("Error code: {}".format(e.code))
