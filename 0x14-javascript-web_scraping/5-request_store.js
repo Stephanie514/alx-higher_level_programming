@@ -1,28 +1,23 @@
 #!/usr/bin/node
 
-const request = require('request');
+const requestModule = require('request');
 const fs = require('fs');
 
-const args = process.argv;
-const url = args[2];
-const filePath = args[3];
+const commandLineArgs = process.argv;
+const requestUrl = commandLineArgs[2];
+const destinationPath = commandLineArgs[3];
 
-request.get(url, (error, response, body) => {
-  if (error) {
-    console.error(error);
-    process.exit(1);
+requestModule(
+  {
+    method: 'GET',
+    uri: requestUrl
+  },
+  function (error, response, body) {
+    if (error) throw error;
+    if (response.statusCode === 200) {
+      fs.writeFile(destinationPath, body, 'utf8', function (error) {
+        if (error) throw error;
+      });
+    }
   }
-
-  if (response.statusCode === 200) {
-    fs.writeFile(filePath, body, 'utf8', (error) => {
-      if (error) {
-        console.error(error);
-        process.exit(1);
-      }
-      console.log(`Content saved to ${filePath}`);
-    });
-  } else {
-    console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
-    process.exit(1);
-  }
-});
+);
