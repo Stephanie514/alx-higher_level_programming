@@ -19,7 +19,8 @@ request.get(apiUrl, (error, response, body) => {
   const films = JSON.parse(body).results;
   const count = films.reduce((acc, film) => {
     const characterUrl = `https://swapi-api.alx-tools.com/api/people/${characterId}/`;
-    if (film.characters.includes(characterUrl)) {
+    const characters = film.characters.map(character => character.toLowerCase());
+    if (characters.includes(characterUrl.toLowerCase())) {
       acc++;
     }
     return acc;
