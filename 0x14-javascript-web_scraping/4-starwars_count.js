@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-const url = process.argv[2];
+const url = 'https://swapi-api.alx-tools.com/api/films/';
 
 request.get(url, (error, response, body) => {
   if (error) {
@@ -17,8 +17,13 @@ request.get(url, (error, response, body) => {
 
   const films = JSON.parse(body).results;
   const characterId = '18';
-  const count = films.filter(film => film.characters.some(character => character.toLowerCase() === `https://swapi-api.alx-tools.com/api/people/${characterId}/`.toLowerCase())).length;
+  const count = films.reduce((acc, film) => {
+    const characterUrl = `https://swapi-api.alx-tools.com/api/people/${characterId}/`;
+    if (film.characters.includes(characterUrl)) {
+      acc++;
+    }
+    return acc;
+  }, 0);
 
   console.log(count);
 });
-
