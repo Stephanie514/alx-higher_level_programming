@@ -1,30 +1,18 @@
 #!/usr/bin/node
 
-const request = require('request');
+const requestModule = require('request');
 
 const apiUrl = process.argv[2];
-const characterId = '18';
 
-request.get(apiUrl, (error, response, body) => {
+requestModule.get(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
-    return;
-  }
-
-  if (response.statusCode !== 200) {
+  } else if (response.statusCode !== 200) {
     console.error(`Error: ${response.statusCode} - ${response.statusMessage}`);
-    return;
+  } else {
+    const films = JSON.parse(body).results;
+    const characterId = '18';
+    const count = films.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)).length;
+    console.log(count);
   }
-
-  const films = JSON.parse(body).results;
-  const count = films.reduce((acc, film) => {
-    const characterUrl = `https://swapi-api.alx-tools.com/api/people/${characterId}/`;
-    const characters = film.characters.map(character => character.toLowerCase());
-    if (characters.includes(characterUrl.toLowerCase())) {
-      acc++;
-    }
-    return acc;
-  }, 0);
-
-  console.log(count);
 });
