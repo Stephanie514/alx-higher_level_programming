@@ -1,17 +1,17 @@
 #!/usr/bin/node
 
-const requestModule = require('request');
+const request = require('request');
 
 const givenMovieId = process.argv[2];
 const givenApiUrl = `https://swapi.dev/api/films/${givenMovieId}/`;
 
-requestModule(givenApiUrl, function (reqError, reqResponse, reqBody) {
-  if (!reqError && reqResponse.statusCode === 200) {
-    const movieData = JSON.parse(reqBody);
+request(givenApiUrl, function (error, response, body) {
+  if (!error && response.statusCode === 200) {
+    const movieData = JSON.parse(body);
     console.log(`Characters of "${movieData.title}":`);
 
     movieData.characters.forEach((characterUrl) => {
-      requestModule(characterUrl, function (charError, charResponse, charBody) {
+      request(characterUrl, function (charError, charResponse, charBody) {
         if (!charError && charResponse.statusCode === 200) {
           const characterData = JSON.parse(charBody);
           console.log(characterData.name);
@@ -21,6 +21,6 @@ requestModule(givenApiUrl, function (reqError, reqResponse, reqBody) {
       });
     });
   } else {
-    console.error('Error fetching movie data:', reqError);
+    console.error('Error fetching movie data:', error);
   }
 });
